@@ -36,14 +36,20 @@ livros = [
 ]
 
 # Consultar (todos)
-# Cada endpoint tem que ter uma função
-@app.route('/livros') #O '@app.route' especifica o endpoint onde sera chamado 
+#O '@app.route' especifica o endpoint onde sera chamado, 'methods' especifica o metodo aceito para esse endpoint que no caso sera somente para ler (GET) 
+@app.route('/livros',methods=['GET'])  # Cada endpoint tem que ter uma função
 # Função que ira ler todos os livros (GET)
 def obter_livros():
     return jsonify(livros) #a função jsonify é para transformar a lista em um formato de JSON
 
 # Consultar(id)
+#Função para obter somente um registro em especifico pelo ID utilizando somente o metodo GET
+@app.route('/livros/<int:id>',methods=['GET'])
+def obter_livro_por_id(id):
+    for livro in livros:  #Loop utilizando o for para obter somente o ID passado no parametro do .get
+      if livro.get('id') == id:
+            return jsonify(livro)
 # Editar
 # Excluir
 
-app.run(port=5000,host='localhost/livros',debug=True)
+app.run(port=5000,host='localhost',debug=True)
