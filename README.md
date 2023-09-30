@@ -41,3 +41,9 @@ Os endpoints são endereços onde as funcionalidades serão disponibilizadas na 
     - localhost/livros/id (PUT)
     - localhost/livros/id (DELETE)
 ```
+
+## Pacotes utilizado
+
+```
+    pip install Flask
+```
