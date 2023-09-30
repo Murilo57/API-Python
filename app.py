@@ -6,32 +6,32 @@ livros = [
     {
         'id': 1,
         'titulo': 'Quem pensa enriquece',
-        'auto': 'Napoleon Hill'
+        'autor': 'Napoleon Hill'
     },
     {
         'id': 2,
         'titulo': 'O Manuscristo',
-        'auto': 'Napoleon Hill'
+        'autor': 'Napoleon Hill'
     },
     {
         'id': 3,
         'titulo': 'Entendendo Algoritmo',
-        'auto': 'Aditya Y. Bhargava'
+        'autor': 'Aditya Y. Bhargava'
     },
     {
         'id': 4,
         'titulo': 'Os Segredos da Mente Milionaria',
-        'auto': 'T. Harv Eker'
+        'autor': 'T. Harv Eker'
     },
     {
         'id': 5,
         'titulo': 'Racionais Sobrevivendo no Inferno',
-        'auto': 'Grupo Racionais'
+        'autor': 'Grupo Racionais'
     },
     {
         'id': 6,
         'titulo': 'O Milagre da Manhã',
-        'auto': 'Hal Elrod'
+        'autor': 'Hal Elrod'
     }               
 ]
 
@@ -49,7 +49,18 @@ def obter_livro_por_id(id):
     for livro in livros:  #Loop utilizando o for para obter somente o ID passado no parametro do .get
       if livro.get('id') == id:
             return jsonify(livro)
+      
 # Editar
+#Função para editar um registro aceitando o metodo PUT
+@app.route('/livros/<int:id>',methods=['PUT'])
+def editar_livro_por_id(id): #pegando o ID do registro q sera modificado
+   livro_alterado = request.get_json() #Pegando o registro requisitado pelo usuario para API
+   # Para isso precisamos de 2 coisas, o indice que o livro se encontra e o ID desse registro
+   for indice,livro in enumerate(livros): #Loop utilizando enumerate para inumerar esse indice e saber qual registro de fato modificar
+       if livro.get('id') == id: #Pega o ID requisitado, se esse ID existir na lista caira aqui
+           livros[indice].update(livro_alterado) #Pega o registro do indice e atualiza 
+           return jsonify(livros[indice])
+       
 # Excluir
 
 app.run(port=5000,host='localhost',debug=True)
