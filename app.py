@@ -61,6 +61,15 @@ def editar_livro_por_id(id): #pegando o ID do registro q sera modificado
            livros[indice].update(livro_alterado) #Pega o registro do indice e atualiza 
            return jsonify(livros[indice])
        
+
+# Criar
+# Função para criar um novo registro utilizando somente o metodo POST
+@app.route('/livros',methods=['POST'])
+def incluir_novo_livro():
+    novo_livro = request.get_json() #variavel pega a requisição do usuario e transforma em formato JSON       
+    livros.append(novo_livro) #Append é utilizado para criar uma novo registro pela requisição
+
+    return jsonify(livros)
 # Excluir
 
 app.run(port=5000,host='localhost',debug=True)
