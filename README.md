@@ -1,6 +1,6 @@
 # API Python
 
-## API criada em Python para aprendizado seguindo o video: 
+## API criada em Python para aprendizado
 
 
 Como CRIAR uma API com PYTHON do Dev Aprender
@@ -34,5 +34,10 @@ Criar uma API que disponibiliza a consulta, criação, edição e exclusão de l
 ## Endpoints
 
 ```
-Os endpoints seria quais as funcionalidades que sera disponibilizadas na API 
+Os endpoints são endereços onde as funcionalidades serão disponibilizadas na API, no caso dessa API:
+    - localhost/livros (GET)
+    - localhost/livros (POST)
+    - localhost/livros/id (GET)
+    - localhost/livros/id (PUT)
+    - localhost/livros/id (DELETE)
 ```
