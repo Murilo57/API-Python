@@ -70,6 +70,13 @@ def incluir_novo_livro():
     livros.append(novo_livro) #Append é utilizado para criar uma novo registro pela requisição
 
     return jsonify(livros)
-# Excluir
 
+# Excluir
+@app.route('/livros/<int:id>',methods=['DELETE'])
+def excluir_livro(id):
+    for indice, livro in enumerate(livros): #Loop para encontrar o registro que sera deletado pelo indice enumerado
+        if livro.get('id') == id: #Se o registro requisitado existir
+            del livros[indice] #Exclusão do livro pelo indice requisitado
+
+    return jsonify(livros)
 app.run(port=5000,host='localhost',debug=True)
